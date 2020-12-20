@@ -9,7 +9,7 @@ class Test < ApplicationRecord
   scope :level_middle -> { where(level: 2..4) }
   scope :level_hard -> { where(level: 5..Float::INFINITY) }
 
-  scope :tests_by_categoty -> (category) do
+  scope :tests_by_category -> (category) do
     joins(:category)
     .where('categories.title=?', category)
   end
@@ -17,9 +17,8 @@ class Test < ApplicationRecord
   validates :title, presence: true, uniq: { scope: :level }
   validates :level, numericality: { only_integer: true, positive: 0 }
 
-  def self.by_category_title(category_title)
-    joins(:category)
-    .where('categories.title = ?', category_title)
+  def self.category_by_title(category)
+    tests_by_category(category)
     .order('tests.title DESC')
     .pluck(:title)
   end
