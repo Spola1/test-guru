@@ -10,8 +10,12 @@ class QuestionsCTestController < ApplicationController
   end
 
   def create
-    @question = test.question.new(questions_params)
-    @question.save
+    @question = @test.question.new(questions_params)
+    if @question.save
+      redirect_to @question.test
+    else
+      render :new
+    end
   end
 
   def show
