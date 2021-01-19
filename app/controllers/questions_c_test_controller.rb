@@ -10,7 +10,7 @@ class QuestionsCTestController < ApplicationController
   end
 
   def create
-    @question = @test.question.new(questions_params)
+    @question = @test.question.new(question_params)
     if @question.save
       redirect_to @question.test
     else
@@ -20,6 +20,14 @@ class QuestionsCTestController < ApplicationController
 
   def show
     render plain: @question.body
+  end
+
+  def update
+    if @question.update(question_params)
+      redirect_to @question
+    else
+      render :edit
+    end
   end
 
   def destroy
