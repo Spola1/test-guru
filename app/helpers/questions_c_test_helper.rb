@@ -1,8 +1,8 @@
 module QuestionsCTestHelper
   def question_header(question)
     if question.new_record?
-      "Create New Question: #{questin.test.title}"
+      "Create New Question: #{question.test.title}"
     else
-      "Edit Question: #{question.tesst.title}"
+      "Edit Question: #{question.test.title}"
     end
 end
