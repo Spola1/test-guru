@@ -1,7 +1,7 @@
 class Test < ApplicationRecord
   has_many :questions
   belongs_to :category
-  belongs_to :author, class_name: "User", foreign_key: :user_id
+  belongs_to :user
   has_many :test_passages
   has_many :users, through: :test_passages
 
@@ -11,7 +11,7 @@ class Test < ApplicationRecord
 
   scope :tests_by_category -> (category) do
     joins(:category)
-    .where('categories.title=?', category)
+    .where('categories.title= ?', category)
   end
 
   validates :title, presence: true, uniq: { scope: :level }
@@ -19,7 +19,7 @@ class Test < ApplicationRecord
 
   def self.category_by_title(category)
     tests_by_category(category)
-    .order('tests.title DESC')
+    .order(title: :desc)
     .pluck(:title)
   end
 end
