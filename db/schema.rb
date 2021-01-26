@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2021_01_25_175904) do
     t.integer "test_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "points"
+    t.integer "points", default: 0
     t.index ["test_id"], name: "index_test_passages_on_test_id"
     t.index ["user_id"], name: "index_test_passages_on_user_id"
   end

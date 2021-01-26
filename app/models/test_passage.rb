@@ -3,6 +3,8 @@ class TestPassage < ApplicationRecord
   belongs_to :user
   belongs_to :current_question, class_name: 'Question', optional: true
 
+  SUCCESS = 85
+
   def completed?
     current_question.nil?
   end
@@ -11,8 +13,19 @@ class TestPassage < ApplicationRecord
     if correct_answer?(answer_ids)
       self.correct_question += 1
     end
-
     save!
+  end
+
+  def number_of_question
+    test.questions.index(current_question) + 1
+  end
+
+  def compilition_test
+    (correct_questions.to_f/test.questions.count*100).round 2
+  end
+
+  def success_test?
+    compilition_test > SUCCESS
   end
 
   private
