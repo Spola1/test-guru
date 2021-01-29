@@ -11,7 +11,7 @@ class Test < ApplicationRecord
 
   scope :tests_by_category -> (category) do
     joins(:category)
-    .where('categories.title=?', category)
+    .where('categories.title= ?', category)
   end
 
   validates :title, presence: true, uniq: { scope: :level }
@@ -19,7 +19,7 @@ class Test < ApplicationRecord
 
   def self.category_by_title(category)
     tests_by_category(category)
-    .order('tests.title DESC')
+    .order(title: :desc)
     .pluck(:title)
   end
 end

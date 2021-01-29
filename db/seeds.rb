@@ -29,12 +29,12 @@ questions = Question.create([
   ])
 
 answers = Answer.create([
-  {answer: "Ruby question 1 - answer 1",question_id: questions[0].id, correct: true},
-  {answer: "Ruby question 1 - answer 2",question_id: questions[0].id},
-  {answer: "Ruby question 1 - answer 3",question_id: questions[0].id},
-  {answer: "Rails question 1 - answer 1",question_id: questions[1].id, correct: true},
-  {answer: "Rails question 1 - answer 2",question_id: questions[1].id, correct: true},
-  {answer: "Rails question 1 - answer 3",question_id: questions[1].id}
+  {body: "Ruby question 1 - answer 1",question_id: questions[0].id, correct: true},
+  {body: "Ruby question 1 - answer 2",question_id: questions[0].id},
+  {body: "Ruby question 1 - answer 3",question_id: questions[0].id},
+  {body: "Rails question 1 - answer 1",question_id: questions[1].id, correct: true},
+  {body: "Rails question 1 - answer 2",question_id: questions[1].id, correct: true},
+  {body: "Rails question 1 - answer 3",question_id: questions[1].id}
   ])
 
 users = User.create([
@@ -43,8 +43,8 @@ users = User.create([
   ])
 
 tests_passage = TestPassage.create([
-  {user_id: users[1].id, test_id: tests[0].id},
-  {user_id: users[1].id, test_id: tests[2].id},
-  {user_id: users[1].id, test_id: tests[3].id},
-  {user_id: users[1].id, test_id: tests[0].id}
+  {user_id: users[1].id, test_id: tests[0].id, points: 30},
+  {user_id: users[1].id, test_id: tests[2].id, points: 30},
+  {user_id: users[1].id, test_id: tests[3].id, points: 30},
+  {user_id: users[1].id, test_id: tests[0].id, points: 30}
   ])
