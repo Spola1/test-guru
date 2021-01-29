@@ -51,4 +51,5 @@ class QuestionsCTestController < ApplicationController
 
   def question_not_found
     render plain: 'Вопрос не найден'
+  end
 end

@@ -35,9 +35,17 @@ class TestsCTestController < ApplicationController
 
   def destroy
     @test.destroy
+
+    redirect_to test_path
+  end
+
+  def start
+    current_user.test.push(@test)
+    redirect_to current_user.test_passage(@test)
   end
 
   ptivate
+
   def find_test
     @test = Test.find(params[:id])
   end
