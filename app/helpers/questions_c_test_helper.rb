@@ -5,4 +5,5 @@ module QuestionsCTestHelper
     else
       "Edit Question: #{question.test.title}"
     end
+  end
 end
