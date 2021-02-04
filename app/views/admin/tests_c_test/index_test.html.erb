@@ -1,4 +1,4 @@
-<h1>Test</h1>
+<h1><%= t('.header') %></h1>
 
 <table>
   <tr>
@@ -11,4 +11,4 @@
   <%= render @tests %>
 
 </table><br>
-<%= link_to 'New test', new_test_path %>
+<%= link_to t('.create'), new_admin_test_path %>
