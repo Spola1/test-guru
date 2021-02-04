@@ -1,6 +1,6 @@
-<% if logged_in? %>
+<% if logger? %>
 
-  <p class="nav user">Welcome, <b><%= current_user.email %></b> Guru</p>
+  <p class="nav user">Welcome, <b><%= current_user %></b> Guru</p>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
