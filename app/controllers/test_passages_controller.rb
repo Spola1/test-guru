@@ -15,7 +15,7 @@ class TestPassagesController < ApplicationController
     result = GistQuestionService.new(@test_passage.current_question).call
 
     flash_options =
-      if result.html_url.present?
+      if result.html_url.success?
         current_user.gists.create!(question: @test_passage.current_question, gist_url: result.html_url)
         { notice: t('.success', gist_url: result.html_url) }
       else
