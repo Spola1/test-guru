@@ -10,14 +10,21 @@ class TestPassagesController < ApplicationController
   def result
 
   end
-
+# ну вот так? создается и вызывается GistQuestionService, дальше у сервиса вызывается метод success?
+# и если это работает:
+# def success?
+#  @client.last_response.status == 200 || 201
+# end
+# создается гист
+# или я что-то не понимаю что от меня хотят
   def gist
-    result = GistQuestionService.new(@test_passage.current_question).call
+    service = GistQuestionService.new(@test_passage.current_question)
+    result = service.call
 
     flash_options =
-      if result.html_url.success?
-        current_user.gists.create!(question: @test_passage.current_question, gist_url: result.html_url)
-        { notice: t('.success', gist_url: result.html_url) }
+      if service.success?
+        current_user.gists.create(question: @test_passage.current_question, github_id: result.id)
+        { notice: t('.success', url: result.html_url) }
       else
         { alert: t('.failure') }
       end
