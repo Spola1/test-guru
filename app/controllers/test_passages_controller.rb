@@ -10,13 +10,7 @@ class TestPassagesController < ApplicationController
   def result
 
   end
-# ну вот так? создается и вызывается GistQuestionService, дальше у сервиса вызывается метод success?
-# и если это работает:
-# def success?
-#  @client.last_response.status == 200 || 201
-# end
-# создается гист
-# или я что-то не понимаю что от меня хотят
+
   def gist
     service = GistQuestionService.new(@test_passage.current_question)
     result = service.call
