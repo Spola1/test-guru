@@ -1,10 +1,6 @@
 class AnswersController < ApplicationController
-  before_action :find_answer, only: [:show, :edit, :update, :destroy]
-  before_action :find_question, only: [:new, :create]
-
-  def index
-    @answers = Answer.all
-  end
+  before_action :find_question, only: %i[new create]
+  before_action :find_answer, only: %i[show edit update destroy]
 
   def show
   end
@@ -18,18 +14,18 @@ class AnswersController < ApplicationController
 
   def create
     @answer = @question.answers.new(answer_params)
-
+    
     if @answer.save
       redirect_to @answer
     else
-      render: new
+      render :new
     end
   end
 
   def update
     if @answer.update(answer_params)
       redirect_to @answer
-    else
+    else 
       render :edit
     end
   end
@@ -44,6 +40,7 @@ class AnswersController < ApplicationController
   def find_answer
     @answer = Answer.find(params[:id])
   end
+
 
   def answer_params
     params.require(:answer).permit(:body, :correct)

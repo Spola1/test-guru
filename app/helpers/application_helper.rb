@@ -1,7 +1,6 @@
 module ApplicationHelper
-
-  def year
-    Time.now.year
+  def current_year
+    "#{Time.now.year.to_i}."
   end
 
   def github_author(author, repo)

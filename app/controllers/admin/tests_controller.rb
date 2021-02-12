@@ -1,13 +1,13 @@
-class Admin::TestsCTestController < Admin::BaseController
+class Admin::TestsController < Admin::BaseController
 
   before_action :find_test, only: %i[show edit update destroy]
-
+  
   def index
     @tests = Test.all
   end
 
   def show
-
+    
   end
 
   def new
@@ -15,7 +15,7 @@ class Admin::TestsCTestController < Admin::BaseController
   end
 
   def edit
-
+    
   end
 
   def create

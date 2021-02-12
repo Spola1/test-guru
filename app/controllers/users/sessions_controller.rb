@@ -13,7 +13,6 @@ class Users::SessionsController < Devise::SessionsController
     super
     flash[:notice] = t('.hello', name: current_user.first_name)
   end
-
   # DELETE /resource/sign_out
   # def destroy
   #   super

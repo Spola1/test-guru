@@ -2,12 +2,12 @@
   <div class="col col-md-4">
     <h2><%= t('.header', title: @test_passage.test.title) %></h2>
 
-    <% if @test_passage.success_test? %>
-      <p >Your score <span class="colorgreen"><%= @test_passage.compilition_test %></span>%. Test passed.</p>
-    <% else %>
-      <p>Your score <span class="colorred"><%= @test_passage.compilition_test %></span>%. Try again.</p>
-    <% end %>
+      <% if @test_passage.success? %>
+        <p >Your score <span class="color_green"><%= @test_passage.percentage_of_correct_answers %></span>%. Test passed.</p>
+      <% else %>
+        <p>Your score <span class="color_red"><%= @test_passage.percentage_of_correct_answers %></span>%. Try again.</p>
+      <% end %>
 
-    <%= link_to 'Back to tests', tests_path %>
+      <%= link_to 'Back to tests', tests_path %>
   </div>
 </div>

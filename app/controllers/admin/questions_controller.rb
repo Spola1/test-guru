@@ -1,4 +1,4 @@
-class Admin::QuestionsController < Admin::BaseController
+ class Admin::QuestionsController < Admin::BaseController
 
   before_action :find_test, only: %i[create new]
   before_action :find_question, only: %i[edit show destroy update]
@@ -23,7 +23,7 @@ class Admin::QuestionsController < Admin::BaseController
   end
 
   def show
-
+    
   end
 
   def update

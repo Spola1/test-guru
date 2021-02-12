@@ -6,5 +6,5 @@ class TestsMailerPreview < ActionMailer::Preview
 
     TestsMailer.completed_test(test_passage)
   end
-  
+
 end
