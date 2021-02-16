@@ -10,5 +10,4 @@ class Admin::BaseController< ApplicationController
   def admin_required!
     redirect_to root_path, alert: t('.norights') unless current_user.admin?
   end
-
 end

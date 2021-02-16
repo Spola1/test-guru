@@ -1,7 +1,7 @@
 <% if resource.errors.any? %>
   <div id="error_description">
     <h2>
-      <%= t('.header', count: resource.errors.count)
+      <%= t('.header', count: resource.errors.count) %>
     </h2>
 
     <ul>
@@ -9,6 +9,5 @@
         <li><%= message %></li>
       <% end %>
     </ul>
-
   </div>
 <% end %>

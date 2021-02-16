@@ -2,9 +2,9 @@
   <div class="col col-md-4">
     <h2><%= t('.header', title: @test_passage.test.title) %></h2>
       <b>
-        (
-        <%= @test_passage.current_question.id %> of
-        <%= @test_passage.test.questions.count %>
+        ( 
+        <%= @test_passage.current_question_number %> of
+        <%= @test_passage.test.questions.count %> 
         )
         <%= @test_passage.current_question.body %>
       </b>

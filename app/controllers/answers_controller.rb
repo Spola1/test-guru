@@ -1,16 +1,16 @@
 class AnswersController < ApplicationController
-  before_action :find_answer, only: [:show, :edit, :update, :destroy]
-  before_action :find_question, only: [:new, :create]
-
-  def index
-    @answers = Answer.all
-  end
+  before_action :find_question, only: %i[new create]
+  before_action :find_answer, only: %i[show edit update destroy]
 
   def show
   end
 
   def new
     @answer = @question.answers.new
+  end
+
+  def index
+    @answers = Answer.all
   end
 
   def edit
@@ -22,7 +22,7 @@ class AnswersController < ApplicationController
     if @answer.save
       redirect_to @answer
     else
-      render: new
+      render :new
     end
   end
 
