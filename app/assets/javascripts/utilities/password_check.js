@@ -13,7 +13,7 @@ function passwordCheck() {
   var confirmation = document.getElementById('user_password_confirmation')
 
   if (password.value == '' || confirmation.value == '') {
-    document.querySelector('.octicon-check').classList.remove('hide')
+    document.querySelector('.octicon-check').classList.add('hide')
     document.querySelector('.octicon-x').classList.add('hide')
     return
   }
