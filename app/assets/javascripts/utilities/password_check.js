@@ -24,7 +24,6 @@ function passwordCheck() {
     confirmation.classList.add('border-green')
     password.classList.remove('border-red')
     confirmation.classList.remove('border-red')
-    return
   }
   else {
     document.querySelector('.octicon-x').classList.remove('hide')
