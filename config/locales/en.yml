@@ -102,6 +102,8 @@ en:
         delete: "Delete"
       form:
         back: "Back"
+      form_inline:
+        submit: "Ok"
 
   users:
     sessions:
@@ -112,6 +114,6 @@ en:
     completed_test:
       subject: "You just completed the TestGuru test"
 
-services:
+  services:
     gist_params:
       question_description: "A question about %{title} from TestGuru"
