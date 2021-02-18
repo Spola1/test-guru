@@ -38,13 +38,7 @@ answers = Answer.create([
   ])
 
 users = User.create([
-  {name: "Aliaksei Hovar", nickname: 'AH'},
-  {name: 'Vadim Hofman', nickname: 'VH'}
-  ])
-
-tests_passage = TestPassage.create([
-  {user_id: users[1].id, test_id: tests[0].id, points: 30},
-  {user_id: users[1].id, test_id: tests[2].id, points: 30},
-  {user_id: users[1].id, test_id: tests[3].id, points: 30},
-  {user_id: users[1].id, test_id: tests[0].id, points: 30}
+  {name: "Aliaksei Hovar", email: 'al.hovar@mail.ru', password: '123' },
+  {name: 'Vadim Hofman', email: 'vad.hofman@mail.ru', password: 'qwer'},
+  {name: 'Admin', email: 'admin@mail.ru', password: 'admin'}
   ])

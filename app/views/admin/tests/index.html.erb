@@ -1,13 +1,13 @@
-<div class="row justify-content-center mt-3">
-  <div class="col col-md-4">
+<%= render 'shared/errors', resource: @test %>
+  <div class="table-responsive">
     <h2><%= t('.header') %></h2>
-      <table>
+      <table class="table mt-3">
         <tr class="table">
           <th class="sort-by-title pointer">
             <%= t('.title') %>
             <%= octicon 'arrow-up', class: 'text-success hide' %>
             <%= octicon 'arrow-down', class: 'text-success hide' %>
-          </th>    
+          </th>
           <th><%= t('.level') %></th>
           <th><%= t('.questions') %></th>
           <th colspan="4"><%= t('.actions') %></th>
