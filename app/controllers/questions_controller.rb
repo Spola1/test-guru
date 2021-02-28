@@ -3,7 +3,7 @@
   before_action :find_test, only: %i[create new]
   before_action :find_question, only: %i[edit show destroy update]
 
-  rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
+  rescue_from ActiveRecord::RecordNotFound, with: :question_not_found
 
   def new
     @question = @test.questions.new
@@ -23,7 +23,7 @@
   end
 
   def show
-    
+    render plain: @question.body
   end
 
   def update
@@ -52,7 +52,7 @@
     @question = Question.find(params[:id])
   end
 
-  def rescue_with_question_not_found
-    render plain: 'Question was not found'
+  def question_not_found
+    render plain: 'Вопрос не найден'
   end
 end

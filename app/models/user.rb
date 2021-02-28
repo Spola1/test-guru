@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  
+
   devise :database_authenticatable,
          :registerable,
          :recoverable,
@@ -13,21 +13,17 @@ class User < ApplicationRecord
   has_many :gists, dependent: :destroy
   has_many :feedbacks, dependent: :destroy
 
-  validates :email, uniqueness: true, format: { with: /.+@.+\..+/i }
+  validates :email, presence: true
+
+  def tests_passage(level)
+    tests.where(level: level)
+  end
 
   def test_passage(test)
     test_passages.order(id: :desc).find_by(test_id: test.id)
-  end
-  
-  def tests_passage(level)
-    Test
-      .joins(:test_passages)
-      .where(test_passages: {user_id: id})
-      .by_level(level)
   end
 
   def admin?
     is_a?(Admin)
   end
-
 end

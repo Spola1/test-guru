@@ -74,7 +74,7 @@ en:
       success: "Gist was successfully created! <a href='%{gist_url}' target='_blank'>Link</a>"
       failure: "An error occurred while saving gist."
 
-  admin:    
+  admin:
     nav:
       header: "admin panel"
       welcome: "Welcome"

@@ -10,4 +10,4 @@ ru:
 
     errors:
       messages:
-        blank: "can't be blank"
+        blank: "Can't be blank"
