@@ -13,8 +13,8 @@ ru:
         category_id: "Категория"
     select:
       prompt: "Выберите категорю"
-
-
+      
+    
   shared:
     errors:
       header:
@@ -62,7 +62,7 @@ ru:
         create: "Создать новый тест"
       edit:
         header: "Редактировать %{title} тест"
-      new:
+      new: 
         header: "Создать новый тест"
       test:
         show: "Показать"

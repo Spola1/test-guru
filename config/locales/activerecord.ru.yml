@@ -10,4 +10,4 @@ ru:
 
     errors:
       messages:
-        blank: "Не может быть пустым"
+        blank: "не может быть пустым"
