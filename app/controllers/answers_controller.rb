@@ -9,12 +9,16 @@ class AnswersController < ApplicationController
     @answer = @question.answers.new
   end
 
+  def index
+    @answers = Answer.all
+  end
+
   def edit
   end
 
   def create
     @answer = @question.answers.new(answer_params)
-    
+
     if @answer.save
       redirect_to @answer
     else
@@ -25,7 +29,7 @@ class AnswersController < ApplicationController
   def update
     if @answer.update(answer_params)
       redirect_to @answer
-    else 
+    else
       render :edit
     end
   end
@@ -40,7 +44,6 @@ class AnswersController < ApplicationController
   def find_answer
     @answer = Answer.find(params[:id])
   end
-
 
   def answer_params
     params.require(:answer).permit(:body, :correct)

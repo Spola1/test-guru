@@ -1,14 +1,14 @@
 class Admin::TestsController < Admin::BaseController
 
-  before_action :find_tests, only: %i[index update_inline]
+  before_action :find_test, only: %i[index update_inline]
   before_action :find_test, only: %i[show edit update destroy update_inline]
-  
+
   def index
     @tests = Test.all
   end
 
   def show
-    
+
   end
 
   def new
@@ -16,7 +16,7 @@ class Admin::TestsController < Admin::BaseController
   end
 
   def edit
-    
+
   end
 
   def create
@@ -37,10 +37,10 @@ class Admin::TestsController < Admin::BaseController
     end
   end
 
-  def update_inline
+  def undate_inline
     if @test.update(test_params)
-      redirect_to admin_tests_path
-    else 
+      redirect_to admin_test_path
+    else
       render :index
     end
   end

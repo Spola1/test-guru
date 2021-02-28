@@ -1,13 +1,18 @@
 class GistQuestionService
 
+  attr_reader :client
+
   def initialize(question)
     @question = question
     @test = @question.test
-    @client = Octokit::Client.new(access_token: ENV['ACCESS_TOKEN'])
-  end
+    @client = client || Octokit::Client.new(access_token: ENV['GITHUB_TOKEN'])
 
   def call
     @client.create_gist(gist_params)
+  end
+
+  def success?
+    @client.last_response.status == 200 || 201
   end
 
   private

@@ -2,16 +2,16 @@
   <div class="col col-md-4">
     <h2><%= t('.header', title: @test_passage.test.title) %></h2>
       <b>
-        ( 
+        (
         <%= @test_passage.current_question_number %> of
-        <%= @test_passage.test.questions.count %> 
+        <%= @test_passage.test.questions.count %>
         )
         <%= @test_passage.current_question.body %>
       </b>
 
       <div class="progress">
-        <div class="progress-bar" id="progress-bar" data-progress="<%= @test_passage.percentage_of_progress %>" aria-valuemax="100">
-          <%= @test_passage.percentage_of_progress %>%
+        <div class="progress-bar" id="progress-bar" data-progress="<%= @test_passage.compilition_test %>" aria-valuemax="100">
+          <%= @test_passage.compilition_test %>%
         </div>
       </div>
 
