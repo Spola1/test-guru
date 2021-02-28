@@ -1,0 +1,20 @@
+<%= render 'shared/errors', resource: @test %>
+  <div class="table-responsive">
+    <h2><%= t('.header') %></h2>
+      <table class="table mt-3">
+        <tr class="table">
+          <th class="sort-by-title pointer">
+            <%= t('.title') %>
+            <%= octicon 'arrow-up', class: 'text-success hide' %>
+            <%= octicon 'arrow-down', class: 'text-success hide' %>
+          </th>    
+          <th><%= t('.level') %></th>
+          <th><%= t('.questions') %></th>
+          <th colspan="4"><%= t('.actions') %></th>
+        </tr>
+
+        <%= render @tests %>
+
+      </table><br>
+      <%= link_to t('.create'), new_admin_test_path %>
+  </div>
