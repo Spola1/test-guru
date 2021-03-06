@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :badges, only: :index
-
   resources :feedbacks, only: %i[new create]
 
   devise_for :users, path: :gurus, path_names: { sign_in: :login, sign_out: :logout },
