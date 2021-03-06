@@ -2,6 +2,7 @@ class TestPassagesController < ApplicationController
 
   before_action :authenticate_user!
   before_action :find_test_passage, only: %i[show update result gist]
+  before_action :check_timer, only: :update
 
   def show
 
@@ -25,14 +26,6 @@ class TestPassagesController < ApplicationController
     redirect_to @test_passage, flash_options
   end
 
-  def badge_award
-    badges = BadgeAwardsService.new(@test_passage).call
-    if badges
-      current_user.badges << badges
-      flash[:notice] = "Вы получили награду!"
-    end
-  end
-
   def update
     @test_passage.accept!(params[:answer_ids])
 
@@ -46,8 +39,22 @@ class TestPassagesController < ApplicationController
 
   private
 
+  def badge_award
+    badges = BadgeAwardsService.new(@test_passage).call
+    if badges
+      current_user.badges << badges
+      flash[:notice] = "Вы получили награду!"
+    end
+  end
+
   def find_test_passage
     @test_passage = TestPassage.find(params[:id])
+  end
+
+  def check_timer
+    if @test_passage.test.duration && @test_passage.overtime?(@test_passage.end_time)
+      redirect_to result_test_passage_path(@test_passage)
+    end
   end
 
 end

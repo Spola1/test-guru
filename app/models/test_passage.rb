@@ -43,6 +43,18 @@ class TestPassage < ApplicationRecord
     (current_question_index.to_f / test.questions.count.to_f) * 100
   end
 
+  def overtime?(end_time)
+    Time.current > end_time
+  end
+
+  def end_time
+    created_at + test.duration.seconds
+  end
+
+  def seconds_left
+    (end_time - Time.current).to_i
+  end
+
   private
 
   def set_success_value

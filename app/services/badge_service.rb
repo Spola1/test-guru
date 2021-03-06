@@ -13,7 +13,7 @@ class BadgeService
   def call
     @badges = []
     RULES.each do
-      |title| send ("badge_#{title}_valid?"), title
+      send ("badge_#{title}_valid?"), title
     end
     @badges
   end

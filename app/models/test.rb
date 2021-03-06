@@ -9,6 +9,9 @@ class Test < ApplicationRecord
 
   validates :level, numericality: { only_integer: true, greater_than_or_equel_to: 0}
 
+  validates :duration, numericality: { only_integer: true,
+                                     greater_than: 0 }
+
   default_scope { order(created_at: :desc) }
   scope :by_level, -> (level) { where(level: level) }
   scope :easy, -> { by_level(0..1) }
