@@ -25,6 +25,14 @@ class TestPassagesController < ApplicationController
     redirect_to @test_passage, flash_options
   end
 
+  def badge_award
+    badges = BadgeAwardsService.new(@test_passage).call
+    if badges
+      current_user.badges << badges
+      flash[:notice] = "Вы получили награду!"
+    end
+  end
+
   def update
     @test_passage.accept!(params[:answer_ids])
 
