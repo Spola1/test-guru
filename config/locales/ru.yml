@@ -31,6 +31,8 @@ ru:
       questions: "Кол-во вопросов"
     test:
       start: "Начать"
+    start:
+      no_questions: "В данном тесте пока нет вопросов!"
 
 
   test_passages:
