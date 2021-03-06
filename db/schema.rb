@@ -24,20 +24,6 @@ ActiveRecord::Schema.define(version: 2021_03_06_115408) do
     t.index ["question_id"], name: "index_answers_on_question_id"
   end
 
-  create_table "badges", force: :cascade do |t|
-    t.string "title"
-    t.string "image"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "badges_users", id: false, force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "badge_id", null: false
-    t.index ["badge_id", "user_id"], name: "index_badges_users_on_badge_id_and_user_id"
-    t.index ["user_id", "badge_id"], name: "index_badges_users_on_user_id_and_badge_id"
-  end
-
   create_table "categories", force: :cascade do |t|
     t.string "title", null: false
     t.datetime "created_at", null: false
@@ -82,7 +68,6 @@ ActiveRecord::Schema.define(version: 2021_03_06_115408) do
     t.integer "correct_questions", default: 0
     t.bigint "current_question_id"
     t.bigint "question_id"
-    t.boolean "success", default: false
     t.index ["current_question_id"], name: "index_test_passages_on_current_question_id"
     t.index ["question_id"], name: "index_test_passages_on_question_id"
     t.index ["test_id"], name: "index_test_passages_on_test_id"

@@ -20,22 +20,6 @@ class User < ApplicationRecord
     test_passages.order(id: :desc).find_by(test_id: test.id)
   end
 
-  def tests_passage(title, level)
-  Test
-    .joins(:test_passages)
-    .where(test_passages: {user_id: id})
-    .where('tests.title = ?', title)
-    .where('tests.level = ?', level)
-  end
-
-  def tests_passage_by_category(category)
-    Test
-      .joins(:test_passages)
-      .where(test_passages: {user_id: id, success: true})
-      .joins(:category)
-      .where('categories.title = ?', category)
-  end
-
   def tests_passage(level)
     Test
       .joins(:test_passages)

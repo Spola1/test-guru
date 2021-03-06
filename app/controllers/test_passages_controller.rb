@@ -29,7 +29,7 @@ class TestPassagesController < ApplicationController
   def update
     @test_passage.accept!(params[:answer_ids])
 
-    if @test_passage.completed?
+    if @test_passage.completed? || @test_passage.test.duration && @test_passage.overtime?(@test_passage.end_time)
       TestsMailer.completed_test(@test_passage).deliver_now
       redirect_to result_test_passage_path(@test_passage)
     else
@@ -39,22 +39,8 @@ class TestPassagesController < ApplicationController
 
   private
 
-  def badge_award
-    badges = BadgeAwardsService.new(@test_passage).call
-    if badges
-      current_user.badges << badges
-      flash[:notice] = "Вы получили награду!"
-    end
-  end
-
   def find_test_passage
     @test_passage = TestPassage.find(params[:id])
-  end
-
-  def check_timer
-    if @test_passage.test.duration && @test_passage.overtime?(@test_passage.end_time)
-      redirect_to result_test_passage_path(@test_passage)
-    end
   end
 
 end
