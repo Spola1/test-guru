@@ -26,7 +26,7 @@ class TestPassagesController < ApplicationController
   end
 
   def badge_award
-    badges = BadgeAwardsService.new(@test_passage).call
+    badges = BadgeService.new(@test_passage).call
     if badges
       current_user.badges << badges
       flash[:notice] = "Вы получили награду!"
@@ -37,6 +37,7 @@ class TestPassagesController < ApplicationController
     @test_passage.accept!(params[:answer_ids])
 
     if @test_passage.completed?
+      badge_award if @test_passage.success?
       TestsMailer.completed_test(@test_passage).deliver_now
       redirect_to result_test_passage_path(@test_passage)
     else

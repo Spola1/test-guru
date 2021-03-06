@@ -1,7 +1,6 @@
 class TestPassage < ApplicationRecord
 
   PASS_TEST_PERCENT = 85
-  FIRST_TRY = 1
 
   belongs_to :user
   belongs_to :test

@@ -8,37 +8,37 @@ class BadgeService
     @level = test_passage.test.level
     @category = test_passage.test.category.title
     @user = test_passage.user
+    @badges = []
   end
 
   def call
-    @badges = []
-    RULES.each do
-      |title| send ("badge_#{title}_valid?"), title
+    RULES.each do |title|
+      send ("badge_#{title}_valid?"), title
     end
     @badges
   end
 
   def badge_first_try_valid?(title)
     if @user.tests_passage(@title, @level).length == 1
-      @badges << Badge.find_by(title: title)
+      badges_array
     end
   end
 
   def badge_backend_master_valid?(title)
     if count_user_backend_uniq_tests && user_not_category_master?(title)
-      @badges << Badge.find_by(title: title)
+      badges_array
     end
   end
 
   def badge_frontend_master_valid?(title)
     if count_user_frontend_uniq_tests && user_not_category_master?(title)
-      @badges << Badge.find_by(title: title)
+      badges_array
     end
   end
 
   def badge_level_master_valid?(title)
     if @user.tests_passage_by_level(@level).uniq.length == Test.by_level(@level).length
-      @badges << Badge.find_by(title: title)
+      badges_array
     end
   end
 
@@ -52,6 +52,12 @@ class BadgeService
 
   def count_user_frontend_uniq_tests
     @user.tests_passage_by_category('Frontend').uniq.length == Test.by_category_title('Frontend').length
+  end
+
+  private
+
+  def badges_array
+    @badges << Badge.find_by(title: title)
   end
 
 end
